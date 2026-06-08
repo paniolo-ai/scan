@@ -20,7 +20,7 @@ from the plugin root's `commands/` directory.
 ```bash
 # Register this repo as a marketplace, then install
 /plugin marketplace add paniolo-ai/scan
-/plugin install paniolo-scan@paniolo
+/plugin install paniolo-scan@paniolo-ai
 ```
 
 After installing, `/paniolo-scan` appears in the slash-command list.

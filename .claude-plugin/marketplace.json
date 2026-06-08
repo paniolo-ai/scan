@@ -1,6 +1,6 @@
 {
-	"name": "paniolo",
-	"owner": { "name": "paniolo" },
+	"name": "paniolo-ai",
+	"owner": { "name": "paniolo-ai" },
 	"plugins": [
 		{
 			"name": "paniolo-scan",

@@ -80,7 +80,7 @@ Add `/paniolo-scan` as a plugin:
 
 ```bash
 /plugin marketplace add https://github.com/paniolo-ai/scan
-/plugin install paniolo-scan@paniolo
+/plugin install paniolo-scan@paniolo-ai
 ```
 
 ### Copilot and other VS Code agents
