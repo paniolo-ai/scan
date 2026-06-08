@@ -19,7 +19,7 @@ from the plugin root's `commands/` directory.
 
 ```bash
 # Register the workflows repo as a marketplace, then install
-/plugin marketplace add paniolo/workflows
+/plugin marketplace add paniolo/paniolo-workflows
 /plugin install paniolo-scan@paniolo
 ```
 

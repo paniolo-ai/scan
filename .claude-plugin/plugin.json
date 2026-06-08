@@ -3,6 +3,6 @@
 	"version": "0.0.2",
 	"description": "Diagnose your repo's AI-agent harness with paniolo-scan, then remediate findings.",
 	"license": "MIT",
-	"homepage": "https://github.com/paniolo/workflows",
-	"repository": "https://github.com/paniolo/workflows"
+	"homepage": "https://github.com/paniolo/paniolo-workflows",
+	"repository": "https://github.com/paniolo/paniolo-workflows"
 }

@@ -11,7 +11,7 @@ To add `/paniolo-scan` as a plugin in Claude Code:
 
 ```bash
 # Add this directory as a local marketplace, then install the plugin
-/plugin marketplace add https://github.com/paniolo/workflows
+/plugin marketplace add https://github.com/paniolo/paniolo-workflows
 /plugin install paniolo-scan@paniolo
 ```
 
