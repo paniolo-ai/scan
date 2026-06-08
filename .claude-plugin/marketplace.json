@@ -1,0 +1,11 @@
+{
+	"name": "paniolo",
+	"owner": { "name": "paniolo" },
+	"plugins": [
+		{
+			"name": "paniolo-scan",
+			"source": "./",
+			"description": "Scan your repo's AI-agent harness, then remediate findings."
+		}
+	]
+}
