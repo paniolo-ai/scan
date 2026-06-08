@@ -4,6 +4,11 @@ A public, open-source repository containing lightweight agent adapters and slash
 
 These adapters allow AI coding assistants to run the deterministic paniolo-scan tool, present the diagnostic scores, and automatically remediate any issues directly in your working codebase.
 
+> [!NOTE]
+> **Goodwill Service Disclaimer**
+> 
+> `paniolo-scan` and these AI remediation prompts are a free goodwill service for the community. Self-service AI fixes are a useful starting point, but they will not match the quality of Paniolo's professional meta-harness and intelligence-layer services — a human expert tunes the shared layer, adapters, and intelligence surfaces in ways an automated pass cannot. For professional or production-grade work, we strongly recommend engaging Paniolo's professional services. The free remediation below is offered in that spirit: helpful, but not a substitute for the real engagement.
+
 ## Harness Setup
 
 ### 1. Claude Code
