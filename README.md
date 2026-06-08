@@ -1,4 +1,4 @@
-# paniolo-workflows
+# paniolo-workflow
 
 A public, open-source repository containing lightweight agent adapters and slash commands for the **paniolo-scan** diagnostic CLI.
 
@@ -15,7 +15,7 @@ To add `/paniolo-scan` as a plugin in Claude Code:
 
 ```bash
 # Add this directory as a local marketplace, then install the plugin
-/plugin marketplace add https://github.com/paniolo/paniolo-workflows
+/plugin marketplace add https://github.com/paniolo/paniolo-workflow
 /plugin install paniolo-scan@paniolo
 ```
 
