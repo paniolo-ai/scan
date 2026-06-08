@@ -18,10 +18,22 @@ To add `/paniolo-scan` as a plugin in Claude Code:
 ### 2. Antigravity
 To add `/paniolo-scan` as a workflow in Antigravity:
 
-Copy the `.agent/` folder from this repository into the root of your codebase:
-```bash
-cp -r .agent/ /path/to/your/project/
-```
+*   **If you do not have an existing `.agent/` folder:**
+    Copy the `.agent/` folder from this repository into your project root:
+    ```bash
+    cp -r .agent/ /path/to/your/project/
+    ```
+
+*   **If you already have a `.agent/` folder:**
+    Copy only the workflow file to avoid overwriting your existing configuration:
+    ```bash
+    # Ensure the destination workflows folder exists
+    mkdir -p /path/to/your/project/.agent/workflows/
+
+    # Copy the workflow file
+    cp .agent/workflows/paniolo-scan.md /path/to/your/project/.agent/workflows/
+    ```
+    Then, append the `/paniolo-scan` workflow registration from `.agent/README.md` to your existing `/path/to/your/project/.agent/README.md`.
 
 ### 3. Cursor, Copilot, and Generic Assistants
 You can use the portable Agent Skills standard by referencing the skill file directly:
