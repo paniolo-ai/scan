@@ -5,7 +5,7 @@
 		{
 			"name": "paniolo-scan",
 			"source": "./",
-			"description": "Scan your repo's AI-agent harness, then remediate findings."
+			"description": "Score your repo's AI-agent harness — CLAUDE.md, AGENTS.md, skills, rules — then remediate the findings."
 		}
 	]
 }

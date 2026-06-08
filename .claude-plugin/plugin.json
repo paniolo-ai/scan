@@ -1,8 +1,20 @@
 {
 	"name": "paniolo-scan",
-	"version": "0.0.2",
-	"description": "Diagnose your repo's AI-agent harness with paniolo-scan, then remediate findings.",
+	"version": "0.1.0",
+	"description": "Score your repo's AI-agent harness — CLAUDE.md, AGENTS.md, skills, rules — then remediate the findings.",
+	"author": { "name": "Paniolo", "url": "https://paniolo.ai/" },
 	"license": "MIT",
-	"homepage": "https://github.com/paniolo/paniolo-workflow",
-	"repository": "https://github.com/paniolo/paniolo-workflow"
+	"homepage": "https://github.com/paniolo-ai/scan",
+	"repository": "https://github.com/paniolo-ai/scan",
+	"keywords": [
+		"agents",
+		"ai",
+		"harness",
+		"claude-code",
+		"cursor",
+		"copilot",
+		"codex",
+		"scan",
+		"audit"
+	]
 }
