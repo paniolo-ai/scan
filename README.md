@@ -46,7 +46,14 @@ npx skills add paniolo-ai/scan -a claude-code -a cursor -a codex
 # See what this repo ships, or install one skill
 npx skills add paniolo-ai/scan --list
 npx skills add paniolo-ai/scan --skill paniolo-scan
+
+# Prefer independent copies over symlinks (Windows, Docker/CI, or committing into a repo)
+npx skills add paniolo-ai/scan --all --copy
 ```
+
+By default the installer **symlinks** the skill into each agent (one canonical copy, updated in
+place by `npx skills update`). Add `--copy` for independent copies when symlinks aren't a good fit.
+Either way, nothing symlinked is committed here — this repo ships the skill as a plain file.
 
 This repo is a multi-skill umbrella: every skill under [`skills/`](skills/) installs through the
 same command, and `--all` keeps you current as more are added.
