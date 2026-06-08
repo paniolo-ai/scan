@@ -25,10 +25,10 @@ intelligence layer is and why it matters.
 > [Paniolo's professional services](https://paniolo.ai/#contact) are recommended for
 > production-grade work. The free tier stays genuinely useful; this is honest guidance, not a gate.
 
-## Install
+## Install the skill (any agent)
 
-One command installs the `paniolo-scan` skill into **every coding agent on your machine** — Claude
-Code, Cursor, Copilot, Codex, Windsurf, Gemini CLI, and 70+ more — via the
+One command installs the `paniolo-scan` **skill** into **every coding agent on your machine** —
+Claude Code, Cursor, Copilot, Codex, Windsurf, Gemini CLI, and 70+ more — via the
 [skills](https://skills.sh) registry:
 
 ```bash
@@ -49,9 +49,16 @@ npx skills add paniolo-ai/scan --skill paniolo-scan
 ```
 
 This repo is a multi-skill umbrella: every skill under [`skills/`](skills/) installs through the
-same command, and `--all` keeps you current as more are added. For a native **`/paniolo-scan`
-slash command** in harnesses that support plugins or workflows, see [Claude Code](#claude-code) and
-[Antigravity](#antigravity) below.
+same command, and `--all` keeps you current as more are added.
+
+> **Skill vs. slash command — two separate installs.**
+> The command above installs the portable **skill**, which works in every agent (in Claude Code it
+> runs as a skill you invoke by name, _not_ as a `/paniolo-scan` command). The native
+> **`/paniolo-scan` slash command** ships through a **different channel that does not go through
+> skills.sh** — the [Claude Code plugin](#claude-code) or the [Antigravity workflow](#antigravity).
+> Installing the skill does **not** add the slash command, and installing the plugin does **not**
+> count toward the skills.sh listing. Pick the skill for the widest reach; add the plugin if you
+> specifically want the `/paniolo-scan` command in Claude Code.
 
 ## Harness coverage
 
@@ -76,7 +83,10 @@ The `--all` install covers every skill-capable agent. If yours still isn't detec
 
 ### Claude Code
 
-Add `/paniolo-scan` as a plugin:
+Claude Code can use paniolo-scan **two ways**:
+
+- **Skill** — `npx skills add paniolo-ai/scan -a claude-code` (the [universal install](#install-the-skill-any-agent)). Invoked by name; counts toward skills.sh.
+- **Slash command** — install the plugin below to add a native `/paniolo-scan` (the plugin bundles the skill too). This path does **not** count toward skills.sh.
 
 ```bash
 /plugin marketplace add https://github.com/paniolo-ai/scan
