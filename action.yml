@@ -1,0 +1,55 @@
+name: "paniolo-scan"
+description: "Run the @paniolo/scan meta-harness diagnostic CLI and fail the build on findings at or above a severity threshold."
+author: "Paniolo"
+branding:
+  icon: "shield"
+  color: "purple"
+
+inputs:
+  fail-on:
+    description: "Severity threshold that fails the build: error | warn | info."
+    required: false
+    default: "error"
+  harness:
+    description: "Comma-separated harness filter (copilot,cursor,codex,antigravity,claude,gemini). Empty scans all."
+    required: false
+    default: ""
+  path:
+    description: "Path within the repository to scan. Passed as the trailing positional argument."
+    required: false
+    default: "."
+  args:
+    description: "Additional raw CLI flags (must be valid @paniolo/scan flags; unknown flags fail the run)."
+    required: false
+    default: ""
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run @paniolo/scan
+      shell: bash
+      env:
+        PANIOLO_FAIL_ON: ${{ inputs.fail-on }}
+        PANIOLO_HARNESS: ${{ inputs.harness }}
+        PANIOLO_PATH: ${{ inputs.path }}
+        PANIOLO_ARGS: ${{ inputs.args }}
+      run: |
+        set -euo pipefail
+
+        scan_args=(--fail-on "$PANIOLO_FAIL_ON")
+
+        if [[ -n "$PANIOLO_HARNESS" ]]; then
+          scan_args+=(--harness "$PANIOLO_HARNESS")
+        fi
+
+        if [[ -n "$PANIOLO_ARGS" ]]; then
+          # shellcheck disable=SC2206
+          extra=($PANIOLO_ARGS)
+          scan_args+=("${extra[@]}")
+        fi
+
+        # path is a positional argument, not a flag; keep it last
+        scan_args+=("${PANIOLO_PATH:-.}")
+
+        echo "Running: npx --yes @paniolo/scan ${scan_args[*]}"
+        npx --yes @paniolo/scan "${scan_args[@]}"

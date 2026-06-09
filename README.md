@@ -170,6 +170,55 @@ Useful when checking `.cursor/rules/`, skill wiring, and VS Code hook settings.
 
 ---
 
+## GitHub Action
+
+Run `@paniolo/scan` as a CI gate with the reusable composite action in this repo. It wraps
+`npx @paniolo/scan` and fails the build when findings meet the `fail-on` threshold.
+
+```yaml
+name: paniolo-scan
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: paniolo-ai/scan@main
+        with:
+          fail-on: error
+```
+
+Pin to a released tag (for example `paniolo-ai/scan@v1`) once tags are published.
+
+### Inputs
+
+| Input     | Description                                                                                  | Default |
+| --------- | -------------------------------------------------------------------------------------------- | ------- |
+| `fail-on` | Severity threshold that fails the build: `error`, `warn`, or `info`.                         | `error` |
+| `harness` | Comma-separated harness filter (`copilot,cursor,codex,antigravity,claude,gemini`). Empty scans all. | `""`    |
+| `path`    | Path within the repository to scan. Passed as the trailing positional argument.              | `.`     |
+| `args`    | Additional raw CLI flags. Must be valid `@paniolo/scan` flags — unknown flags fail the run.  | `""`    |
+
+```yaml
+# Stricter gate, JSON output, scan a subdirectory
+- uses: paniolo-ai/scan@main
+  with:
+    fail-on: warn
+    harness: cursor,copilot
+    args: "--format json"
+    path: packages/app
+```
+
+---
+
 ## Architecture
 
 This repository contains only thin, harness-specific triggers. Rule definitions, severity
