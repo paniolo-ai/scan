@@ -28,7 +28,7 @@ intelligence layer is and why it matters.
 ## Install the skill (any agent)
 
 One command installs the `paniolo-scan` **skill** into **every coding agent on your machine** —
-Claude Code, Cursor, Copilot, Codex, Windsurf, Gemini CLI, and 70+ more — via the
+Claude Code, Cursor, Copilot, Codex, Devin, Gemini CLI, and 70+ more — via the
 [skills](https://skills.sh) registry:
 
 ```bash
@@ -78,7 +78,7 @@ slash-command adapters where a harness supports them.
 | Cursor | Portable skill | `npx skills add paniolo-ai/scan -a cursor` |
 | Copilot (VS Code) | Portable skill | `npx skills add paniolo-ai/scan -a copilot` |
 | Codex | Portable skill (also reads `AGENTS.md`) | `npx skills add paniolo-ai/scan -a codex` |
-| Windsurf | Portable skill | `npx skills add paniolo-ai/scan -a windsurf` |
+| Devin | Portable skill | `npx skills add paniolo-ai/scan -a devin` |
 | Gemini CLI | Portable skill | `npx skills add paniolo-ai/scan -a gemini-cli` |
 | Antigravity / Gemini | `/paniolo-scan` workflow | [Antigravity setup](#antigravity) |
 | Any other skill-capable agent | Portable skill | `npx skills add paniolo-ai/scan --all` |
