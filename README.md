@@ -191,12 +191,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - uses: paniolo-ai/scan@main
+      - uses: paniolo-ai/scan@v0.1.0
         with:
           fail-on: error
 ```
 
-Pin to a released tag (for example `paniolo-ai/scan@v1`) once tags are published.
+The action is pre-1.0, so pin an exact tag like `paniolo-ai/scan@v0.1.0`. Inputs may
+change before a stable `v1` is published; `@main` tracks the latest unreleased changes.
 
 ### Inputs
 
@@ -209,7 +210,7 @@ Pin to a released tag (for example `paniolo-ai/scan@v1`) once tags are published
 
 ```yaml
 # Stricter gate, JSON output, scan a subdirectory
-- uses: paniolo-ai/scan@main
+- uses: paniolo-ai/scan@v0.1.0
   with:
     fail-on: warn
     harness: cursor,copilot
