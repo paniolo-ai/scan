@@ -1,0 +1,36 @@
+name: action-self-test
+
+# Proves the composite action runs end-to-end on a real runner and guards
+# against regressions in action.yml. Uses the action from this checkout (`./`).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  default-inputs:
+    name: Default inputs (fail-on error)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: ./
+
+  explicit-inputs:
+    name: Explicit inputs (harness + args + path)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: ./
+        with:
+          fail-on: error
+          harness: cursor,copilot
+          args: "--format json"
+          path: .
