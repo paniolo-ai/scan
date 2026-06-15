@@ -230,6 +230,7 @@ thresholds, and grading live in the compiled `@paniolo/scan` CLI (install via
 | ----- | ------- | ---- |
 | Diagnose | `@paniolo/scan` | `npx @paniolo/scan` — static JSON report, no writes |
 | Remediate | **paniolo-ai/scan** (this repo) | Open-source agent skill + slash commands |
+| Gate (CI) | **paniolo-ai/scan** (this repo) | Reusable GitHub Action — runs the diagnostic, fails the build on findings |
 | Build and evolve | [Paniolo](https://paniolo.ai/) | Professional meta-harness engineering |
 
 ---
