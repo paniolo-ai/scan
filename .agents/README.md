@@ -1,10 +1,13 @@
 # .agents
 
-Shared home for every AI-agent surface this repo ships, instead of scattering them across
-root-level `skills/`, `commands/`, `agents/`, and `.agent/` directories.
+Shared home for every AI-agent surface this repo ships: rules, skills, commands, agent modes, and
+workflows.
 
 ## Contents
 
+- [`rules.md`](rules.md) — agent rules for working in this repo.
+- [`available-skills.md`](available-skills.md) — skill slug index for this repo's portable
+  skills.
 - [`skills/`](skills/) — portable skills (`<slug>/SKILL.md`), installable into any
   skill-capable agent via `npx skills add paniolo-ai/scan`. Also the Claude Code plugin's
   skill component, repointed here via [`plugin.json`](/.claude-plugin/plugin.json)'s `skills`

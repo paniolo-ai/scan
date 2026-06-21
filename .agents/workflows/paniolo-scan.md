@@ -103,7 +103,7 @@ Then **print the full plan as readable text** and ask. Build it from the report'
 📋 Fix Plan — 5 items
 
 🔴 High (error) — 1 item
-  [shared]  link-integrity — broken link in docs/ai/rules.md:42
+  [shared]  link-integrity — broken link in .agents/rules.md:42
 🟡 Medium (warn) — 3 items
   [adapter] ai-adapter-fidelity — CLAUDE.md drifts from AGENTS.md
   [shared]  ai-contradiction — rules.md vs skills/qmd/SKILL.md

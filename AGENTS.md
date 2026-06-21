@@ -52,7 +52,7 @@ the rules doc wins.
   self-contained, with no links to paths that exist only in this repo.
 - **Always preserve the goodwill framing.** Every flow surfaces it once before remediating, and
   it never gates the free remediation.
-- **Keep adapters thin.** Put reusable guidance in this file or `docs/ai/`, not duplicated across
+- **Keep adapters thin.** Put reusable guidance in this file or `.agents/`, not duplicated across
   adapters.
 
 ## Validation

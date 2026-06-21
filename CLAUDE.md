@@ -1,7 +1,7 @@
 # Claude Notes
 
 Keep this file short. Reusable guidance belongs in [AGENTS.md](/AGENTS.md) and
-[docs/ai/](/docs/ai/).
+[.agents/](/.agents/).
 
 ## Shared Context
 

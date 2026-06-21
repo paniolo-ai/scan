@@ -27,7 +27,7 @@ around `@paniolo/scan`. Broader context lives in [AGENTS.md](/AGENTS.md).
   scan → present → remediate → re-scan loop. Keep them in sync, adjusted per harness.
 - **Keep the skill portable.** `SKILL.md` installs into other repos via `npx skills add`; it must
   be self-contained, with no links to paths that exist only here.
-- **Keep adapters thin.** Shared guidance belongs in [AGENTS.md](/AGENTS.md) or `docs/ai/`, not
+- **Keep adapters thin.** Shared guidance belongs in [AGENTS.md](/AGENTS.md) or `.agents/`, not
   duplicated across adapters.
 - **Stable invocation.** The user-facing trigger is `/paniolo-scan`, the install command is
   `npx skills add paniolo-ai/scan`, and the CI reference is `uses: paniolo-ai/scan@<tag>`. Do not
