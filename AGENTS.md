@@ -6,11 +6,11 @@ remediate its findings.
 
 ## Read First
 
-1. [docs/ai/rules.md](/docs/ai/rules.md) — canonical project rules (this file defers to it).
-2. [docs/ai/available-skills.md](/docs/ai/available-skills.md) — skill slug index.
+1. [llm-wiki/wiki/authoring/harness-rules/rules.md](llm-wiki/wiki/authoring/harness-rules/rules.md) — canonical project rules (this file defers to it).
+2. [llm-wiki/wiki/authoring/harness-ai-system/available-skills.md](llm-wiki/wiki/authoring/harness-ai-system/available-skills.md) — skill slug index.
 3. [README.md](/README.md) — user-facing install and harness setup.
 
-Thin adapters such as `CLAUDE.md` and `.agent/README.md` should stay short and point back here.
+Thin adapters such as `CLAUDE.md` and `.agents/README.md` should stay short and point back here.
 
 ## What this repo is
 
@@ -24,9 +24,9 @@ loop:
 
 | Surface | Path | Consumed by |
 | ------- | ---- | ----------- |
-| Portable skill | [skills/paniolo-scan/SKILL.md](/skills/paniolo-scan/SKILL.md) | Any skill-capable agent (via `npx skills add`) |
-| Slash command | [commands/paniolo-scan.md](/commands/paniolo-scan.md) | Claude Code plugin |
-| Workflow | [.agent/workflows/paniolo-scan.md](/.agent/workflows/paniolo-scan.md) | Antigravity / Gemini |
+| Portable skill | [.agents/skills/paniolo-scan/SKILL.md](/.agents/skills/paniolo-scan/SKILL.md) | Any skill-capable agent (via `npx skills add`) |
+| Slash command | [.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md) | Claude Code plugin |
+| Workflow | [.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) | Antigravity / Gemini |
 
 The **GitHub Action** is a separate, non-interactive surface — it runs the diagnostic only (no
 remediation) as a CI gate that fails the build on findings at or above a threshold:
@@ -38,7 +38,7 @@ remediation) as a CI gate that fails the build on findings at or above a thresho
 
 ## Core Rules
 
-Treat [docs/ai/rules.md](/docs/ai/rules.md) as canonical. If this file and the rules doc disagree,
+Treat [llm-wiki/wiki/authoring/harness-rules/rules.md](llm-wiki/wiki/authoring/harness-rules/rules.md) as canonical. If this file and the rules doc disagree,
 the rules doc wins.
 
 - **Never reimplement scanner logic here.** Read rules, scores, and thresholds from the CLI's JSON

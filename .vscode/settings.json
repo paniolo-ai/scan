@@ -1,5 +1,5 @@
 {
 	"chat.agentSkillsLocations": {
-		"skills/": true
+		".agents/skills/": true
 	}
 }

@@ -55,8 +55,8 @@ By default the installer **symlinks** the skill into each agent (one canonical c
 place by `npx skills update`). Add `--copy` for independent copies when symlinks aren't a good fit.
 Either way, nothing symlinked is committed here — this repo ships the skill as a plain file.
 
-This repo is a multi-skill umbrella: every skill under [`skills/`](skills/) installs through the
-same command, and `--all` keeps you current as more are added.
+This repo is a multi-skill umbrella: every skill under [`.agents/skills/`](.agents/skills/)
+installs through the same command, and `--all` keeps you current as more are added.
 
 > **Skill vs. slash command — two separate installs.**
 > The command above installs the portable **skill**, which works in every agent (in Claude Code it
@@ -109,13 +109,13 @@ npx skills add paniolo-ai/scan -a copilot
 ```
 
 To ship the skill **as part of a target repo** — so teammates get it without installing anything —
-commit `skills/paniolo-scan/SKILL.md` into that repo and point VS Code at it in
+commit `.agents/skills/paniolo-scan/SKILL.md` into that repo and point VS Code at it in
 `.vscode/settings.json`:
 
 ```json
 {
   "chat.agentSkillsLocations": {
-    "skills/": true
+    ".agents/skills/": true
   }
 }
 ```
@@ -126,21 +126,21 @@ framing, then fixes selected items and re-scans.
 
 ### Antigravity
 
-**No existing `.agent/` folder** — copy this repo's `.agent/` into your project:
+**No existing `.agents/` folder** — copy this repo's `.agents/workflows/` into your project:
 
 ```bash
-cp -r .agent/ /path/to/your/project/
+mkdir -p /path/to/your/project/.agents/workflows/
+cp .agents/workflows/paniolo-scan.md /path/to/your/project/.agents/workflows/
 ```
 
-**Existing `.agent/` folder** — copy only the workflow:
+**Existing `.agents/` folder** — copy only the workflow:
 
 ```bash
-mkdir -p /path/to/your/project/.agent/workflows/
-cp .agent/workflows/paniolo-scan.md /path/to/your/project/.agent/workflows/
+cp .agents/workflows/paniolo-scan.md /path/to/your/project/.agents/workflows/
 ```
 
-Then append the `/paniolo-scan` registration from [.agent/README.md](.agent/README.md) to your
-project's `.agent/README.md`.
+Then append the `/paniolo-scan` registration from [.agents/README.md](.agents/README.md) to your
+project's `.agents/README.md`.
 
 ### Cursor
 
@@ -151,8 +151,8 @@ npx skills add paniolo-ai/scan -a cursor
 ```
 
 Prefer to commit the skill into the repo for your team? See
-[Copilot and other VS Code agents](#copilot-and-other-vs-code-agents) — keep skills in root
-`skills/`, not `.cursor/skills/`, so one tree serves every harness.
+[Copilot and other VS Code agents](#copilot-and-other-vs-code-agents) — keep skills in
+`.agents/skills/`, not `.cursor/skills/`, so one tree serves every harness.
 
 **Run in Cursor Agent** — open Agent chat in the target repo and use prompts like:
 

@@ -6,6 +6,9 @@
 	"license": "MIT",
 	"homepage": "https://github.com/paniolo-ai/scan",
 	"repository": "https://github.com/paniolo-ai/scan",
+	"skills": ["./.agents/skills/"],
+	"commands": ["./.agents/commands/"],
+	"agents": ["./.agents/agents/adapter-sync.agent.md"],
 	"keywords": [
 		"agents",
 		"ai",

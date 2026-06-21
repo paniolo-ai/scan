@@ -21,9 +21,9 @@ around `@paniolo/scan`. Broader context lives in [AGENTS.md](/AGENTS.md).
 
 ## Adapter Rules
 
-- **One flow, three surfaces.** [SKILL.md](/skills/paniolo-scan/SKILL.md),
-  [commands/paniolo-scan.md](/commands/paniolo-scan.md), and
-  [.agent/workflows/paniolo-scan.md](/.agent/workflows/paniolo-scan.md) describe the same
+- **One flow, three surfaces.** [SKILL.md](/.agents/skills/paniolo-scan/SKILL.md),
+  [.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md), and
+  [.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) describe the same
   scan → present → remediate → re-scan loop. Keep them in sync, adjusted per harness.
 - **Keep the skill portable.** `SKILL.md` installs into other repos via `npx skills add`; it must
   be self-contained, with no links to paths that exist only here.

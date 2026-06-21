@@ -15,13 +15,13 @@ for that harness's tools:
 
 | Surface | Path | Harness | Tooling notes |
 | ------- | ---- | ------- | ------------- |
-| Portable skill | [/skills/paniolo-scan/SKILL.md](/skills/paniolo-scan/SKILL.md) | Any skill-capable agent | Must stay self-contained and portable — no links to repo-local paths |
-| Slash command | [/commands/paniolo-scan.md](/commands/paniolo-scan.md) | Claude Code | May use `Agent`, `AskUserQuestion`, `allowed-tools` |
-| Workflow | [/.agent/workflows/paniolo-scan.md](/.agent/workflows/paniolo-scan.md) | Antigravity / Gemini | Uses `invoke_subagent` / `ask_question`; note Windows shell variants |
+| Portable skill | [/.agents/skills/paniolo-scan/SKILL.md](/.agents/skills/paniolo-scan/SKILL.md) | Any skill-capable agent | Must stay self-contained and portable — no links to repo-local paths |
+| Slash command | [/.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md) | Claude Code | May use `Agent`, `AskUserQuestion`, `allowed-tools` |
+| Workflow | [/.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) | Antigravity / Gemini | Uses `invoke_subagent` / `ask_question`; note Windows shell variants |
 
 ## Procedure
 
-Follow [docs/ai/rules.md](/docs/ai/rules.md). For each flow change:
+Follow [llm-wiki/wiki/authoring/harness-rules/rules.md](llm-wiki/wiki/authoring/harness-rules/rules.md). For each flow change:
 
 1. Decide the canonical wording, then apply it to all three surfaces.
 2. Preserve the goodwill framing and the `High + Medium` remediation default in each.
