@@ -7,7 +7,7 @@ remediate its findings.
 ## Read First
 
 1. [[sharp-shooter-wiki:rules]] — canonical project rules (this file defers to it).
-2. [[sharp-shooter-wiki:available-skills]] — skill slug index.
+2. [[paniolo-wiki:available-skills]] — skill slug index.
 3. [README.md](/README.md) — user-facing install and harness setup.
 
 Thin adapters such as `CLAUDE.md` and `.agents/README.md` should stay short and point back here.
