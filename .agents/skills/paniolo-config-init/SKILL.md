@@ -3,7 +3,7 @@ name: paniolo-config-init
 description: Scaffold a starter paniolo.config.json by asking the user which AI vendors/harnesses (Claude Code, Cursor, Copilot, Codex, Gemini, Antigravity) this repo should support. Use when asked to init, scaffold, or set up paniolo.config.json, configure which AI vendors a repo supports, or on /paniolo-config-init.
 license: MIT
 metadata:
-  version: 0.1.0
+  version: 0.4.21
   homepage: https://github.com/paniolo-ai/scan
 ---
 

@@ -3,7 +3,7 @@ name: paniolo-scan
 description: Audit and optimize a repository's AI coding agent harness — Claude Code, Cursor, Copilot, Codex, Gemini, and Antigravity — by running the deterministic `npx @paniolo/scan` CLI, then remediating findings in the working tree. Use when asked to scan, audit, check, score, or optimize an agent harness, a CLAUDE.md / AGENTS.md setup, skills, rules, or meta-harness, or on /paniolo-scan.
 license: MIT
 metadata:
-  version: 0.1.0
+  version: 0.4.21
   homepage: https://github.com/paniolo-ai/scan
 ---
 
