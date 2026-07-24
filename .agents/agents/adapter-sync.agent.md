@@ -31,7 +31,7 @@ Follow [[sharp-shooter-wiki:rules]]. For each flow change:
 ## Done When
 
 - All three surfaces describe the same scan → present → remediate → re-scan loop.
-- `npx @paniolo/scan --format json .` on this repo stays clean of warnings.
+- `npx @paniolo/cli scan --format json .` on this repo stays clean of warnings.
 
 ## Boundaries
 

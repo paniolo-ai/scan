@@ -23,7 +23,7 @@ deterministic discovery mode so detection matches what `paniolo-scan` actually u
 scoring:
 
 ```bash
-npx --yes @paniolo/scan --print-discovery .
+npx --yes @paniolo/cli scan --print-discovery .
 ```
 
 This skips the full rule scan and prints JSON only, shaped like:
@@ -84,7 +84,7 @@ this config grows with the rule set, so don't pre-populate `rules` with every ru
 ```json
 {
   "$schema": "https://paniolo.ai/schemas/paniolo.config.v1.json",
-  "extends": ["@paniolo/scan/presets/meta-harness.json"],
+  "extends": ["@paniolo/cli/presets/meta-harness.json"],
   "harnesses": ["claude", "cursor"],
   "rules": {},
   "options": {}
@@ -94,7 +94,7 @@ this config grows with the rule set, so don't pre-populate `rules` with every ru
 - `harnesses` — exactly what the user picked in Step 3, lowercase, matching the CLI's
   `--harness` flag and the `harnesses` field from `--print-discovery`/the scan report.
   Omit the key entirely (rather than writing `[]`) when the user chose "all".
-- `extends` — default to `@paniolo/scan/presets/meta-harness.json` unless the user names
+- `extends` — default to `@paniolo/cli/presets/meta-harness.json` unless the user names
   a different preset (`paniolo-reference`, `scan-legacy`, `guidance-strict`,
   `boundary-minimal`).
 - `options.inventory.skillsDirs` — only present when Step 4 ran (discovery found nothing).
@@ -104,7 +104,7 @@ this config grows with the rule set, so don't pre-populate `rules` with every ru
 
 ### Step 6: Confirm and offer a scan
 
-Show the written file's contents. Offer to run `npx --yes @paniolo/scan --format json .`
+Show the written file's contents. Offer to run `npx --yes @paniolo/cli scan --format json .`
 (see the `paniolo-scan` skill/command) to confirm the new config loads and to get a
 baseline score.
 

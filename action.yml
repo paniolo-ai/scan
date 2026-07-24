@@ -1,5 +1,5 @@
 name: "paniolo-scan"
-description: "Run the @paniolo/scan meta-harness diagnostic CLI and fail the build on findings at or above a severity threshold."
+description: "Run the paniolo scan meta-harness diagnostic CLI via @paniolo/cli and fail the build on findings at or above a severity threshold."
 author: "Paniolo"
 branding:
   icon: "shield"
@@ -19,14 +19,14 @@ inputs:
     required: false
     default: "."
   args:
-    description: "Additional raw CLI flags (must be valid @paniolo/scan flags; unknown flags fail the run)."
+    description: "Additional raw CLI flags (must be valid paniolo scan flags from @paniolo/cli; unknown flags fail the run)."
     required: false
     default: ""
 
 runs:
   using: "composite"
   steps:
-    - name: Run @paniolo/scan
+    - name: Run paniolo scan
       shell: bash
       env:
         PANIOLO_FAIL_ON: ${{ inputs.fail-on }}
@@ -51,5 +51,5 @@ runs:
         # path is a positional argument, not a flag; keep it last
         scan_args+=("${PANIOLO_PATH:-.}")
 
-        echo "Running: npx --yes @paniolo/scan ${scan_args[*]}"
-        npx --yes @paniolo/scan "${scan_args[@]}"
+        echo "Running: npx --yes @paniolo/cli scan ${scan_args[*]}"
+        npx --yes @paniolo/cli scan "${scan_args[@]}"

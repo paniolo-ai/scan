@@ -1,8 +1,8 @@
 # AGENTS.md
 
 Repo-wide instructions for AI coding agents working in **paniolo-ai/scan** — the public,
-open-source adapter layer that lets a coding agent run the deterministic `@paniolo/scan` CLI and
-remediate its findings.
+open-source adapter layer that lets a coding agent run the deterministic `paniolo scan` CLI
+(via `@paniolo/cli`) and remediate its findings.
 
 ## Read First
 
@@ -14,8 +14,9 @@ Thin adapters such as `CLAUDE.md` and `.agents/README.md` should stay short and 
 
 ## What this repo is
 
-This repo ships **only thin triggers** around `@paniolo/scan`. Rule definitions, severity
-thresholds, scores, and grades live in the compiled CLI (`npx @paniolo/scan`), not here. It exists
+This repo ships **only thin triggers** around `paniolo scan` (via `@paniolo/cli`). Rule
+definitions, severity thresholds, scores, and grades live in the compiled `paniolo scan` CLI,
+not here. It exists
 to expose two public distribution channels: the **portable skill** (installed via `npx skills add`,
 the [skills.sh](https://skills.sh/paniolo-ai/scan) listing) and the **GitHub Action** (a CI gate).
 
@@ -61,7 +62,7 @@ After editing markdown, format and lint it (if tooling is configured), then dogf
 this repo:
 
 ```bash
-npx @paniolo/scan --format json .
+npx @paniolo/cli scan --format json .
 ```
 
 The repo should keep a clean meta-harness profile — it is the public face of a product that

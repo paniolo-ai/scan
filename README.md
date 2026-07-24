@@ -1,26 +1,27 @@
 # paniolo-ai/scan
 
 [![Install with skills.sh](https://skills.sh/b/paniolo-ai/scan)](https://skills.sh/paniolo-ai/scan)
-[![npm @paniolo/scan](https://img.shields.io/npm/v/%40paniolo%2Fscan?label=%40paniolo%2Fscan)](https://www.npmjs.com/package/@paniolo/scan)
+[![npm @paniolo/cli](https://img.shields.io/npm/v/%40paniolo%2Fcli?label=%40paniolo%2Fcli)](https://www.npmjs.com/package/@paniolo/cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
-> Thin agent adapters for **`@paniolo/scan`** — run the diagnostic CLI from your coding agent,
-> review meta-harness scores, and optionally remediate findings in your working tree.
+> Thin agent adapters for **`paniolo scan`** (via `@paniolo/cli`) — run the diagnostic CLI from
+> your coding agent, review meta-harness scores, and optionally remediate findings in your
+> working tree.
 
-This repo ships harness-specific triggers around the deterministic `@paniolo/scan` CLI from
-[Paniolo](https://paniolo.ai/). The CLI diagnoses; your agent applies fixes when you ask. Pick
-the setup for the tool you use below.
+This repo ships harness-specific triggers around the deterministic `paniolo scan` CLI from
+`@paniolo/cli` and [Paniolo](https://paniolo.ai/). The CLI diagnoses; your agent applies fixes when
+you ask. Pick the setup for the tool you use below.
 
 > **This is the open-source skill and slash-command layer**, not the scanner's source. The
-> `@paniolo/scan` CLI installs via npm (`npx @paniolo/scan`); these adapters let your agent run it
-> and act on the report.
+> `paniolo scan` CLI installs via npm (`npx @paniolo/cli scan`); these adapters let your agent
+> run it and act on the report.
 
 New to meta-harness infrastructure? See [paniolo.ai](https://paniolo.ai/) for what the
 intelligence layer is and why it matters.
 
 > **Goodwill service**
 >
-> `@paniolo/scan` and these remediation prompts are a free community starting point. Self-service
+> `paniolo scan` and these remediation prompts are a free community starting point. Self-service
 > AI fixes will not match a human-tuned intelligence layer —
 > [Paniolo's professional services](https://paniolo.ai/#contact) are recommended for
 > production-grade work. The free tier stays genuinely useful; this is honest guidance, not a gate.
@@ -35,9 +36,9 @@ Claude Code, Cursor, Copilot, Codex, Devin, Gemini CLI, and 70+ more — via the
 npx skills add paniolo-ai/scan --all
 ```
 
-Then ask your agent: _"Use paniolo-scan to scan this repo and summarize findings."_ The skill runs
-`npx --yes @paniolo/scan --format json`, presents your meta-harness scores, surfaces the goodwill
-framing, then remediates the findings you pick.
+Then ask your agent: _"Use paniolo-scan to scan this repo and summarize findings."_ The skill
+runs `npx --yes @paniolo/cli scan --format json`, presents your meta-harness scores, surfaces
+the goodwill framing, then remediates the findings you pick.
 
 ```bash
 # Target specific agents instead of all of them
@@ -92,8 +93,10 @@ The `--all` install covers every skill-capable agent. If yours still isn't detec
 
 Claude Code can use paniolo-scan **two ways**:
 
-- **Skill** — `npx skills add paniolo-ai/scan -a claude-code` (the [universal install](#install-the-skill-any-agent)). Invoked by name; counts toward skills.sh.
-- **Slash command** — install the plugin below to add a native `/paniolo-scan` (the plugin bundles the skill too). This path does **not** count toward skills.sh.
+- **Skill** — `npx skills add paniolo-ai/scan -a claude-code` (the
+  [universal install](#install-the-skill-any-agent)). Invoked by name; counts toward skills.sh.
+- **Slash command** — install the plugin below to add a native `/paniolo-scan` (the plugin bundles
+  the skill too). This path does **not** count toward skills.sh.
 
 ```bash
 /plugin marketplace add https://github.com/paniolo-ai/scan
@@ -120,9 +123,9 @@ commit `.agents/skills/paniolo-scan/SKILL.md` into that repo and point VS Code a
 }
 ```
 
-Then ask in chat: _"Use the paniolo-scan skill to scan this repo and list findings."_ The skill
-runs `npx --yes @paniolo/scan --format json`, presents scores and findings, surfaces the goodwill
-framing, then fixes selected items and re-scans.
+Then ask in chat: _"Use the paniolo-scan skill to scan this repo and list findings."_ The
+skill runs `npx --yes @paniolo/cli scan --format json`, presents scores and findings, surfaces
+the goodwill framing, then fixes selected items and re-scans.
 
 ### Antigravity
 
@@ -158,12 +161,12 @@ Prefer to commit the skill into the repo for your team? See
 
 - `Use the paniolo-scan skill to scan this repo, summarize dimension scores, and list findings.`
 - `Run paniolo-scan, show the lowest meta-harness dimensions, then fix High and Medium findings.`
-- `Scan with npx @paniolo/scan --format json and remediate errors and warnings.`
+- `Scan with npx @paniolo/cli scan --format json and remediate errors and warnings.`
 
 **Cursor-specific scan filter** — emphasize Cursor harness findings in CLI output:
 
 ```bash
-npx @paniolo/scan --harness cursor --format json
+npx @paniolo/cli scan --harness cursor --format json
 ```
 
 Useful when checking `.cursor/rules/`, skill wiring, and VS Code hook settings.
@@ -172,8 +175,8 @@ Useful when checking `.cursor/rules/`, skill wiring, and VS Code hook settings.
 
 ## GitHub Action
 
-Run `@paniolo/scan` as a CI gate with the reusable composite action in this repo. It wraps
-`npx @paniolo/scan` and fails the build when findings meet the `fail-on` threshold.
+Run `paniolo scan` as a CI gate with the reusable composite action in this repo. It wraps
+`npx @paniolo/cli scan` and fails the build when findings meet the `fail-on` threshold.
 
 ```yaml
 name: paniolo-scan
@@ -206,7 +209,7 @@ change before a stable `v1` is published; `@main` tracks the latest unreleased c
 | `fail-on` | Severity threshold that fails the build: `error`, `warn`, or `info`.                         | `error` |
 | `harness` | Comma-separated harness filter (`copilot,cursor,codex,antigravity,claude,gemini`). Empty scans all. | `""`    |
 | `path`    | Path within the repository to scan. Passed as the trailing positional argument.              | `.`     |
-| `args`    | Additional raw CLI flags. Must be valid `@paniolo/scan` flags — unknown flags fail the run.  | `""`    |
+| `args`    | Additional raw CLI flags. Must be valid `paniolo scan` flags — unknown flags fail the run.  | `""`    |
 
 ```yaml
 # Stricter gate, JSON output, scan a subdirectory
@@ -223,12 +226,12 @@ change before a stable `v1` is published; `@main` tracks the latest unreleased c
 ## Architecture
 
 This repository contains only thin, harness-specific triggers. Rule definitions, severity
-thresholds, and grading live in the compiled `@paniolo/scan` CLI (install via
-`npx @paniolo/scan`).
+thresholds, and grading live in the compiled `paniolo scan` CLI from `@paniolo/cli` (install via
+`npx @paniolo/cli scan`).
 
 | Layer | Surface | Role |
 | ----- | ------- | ---- |
-| Diagnose | `@paniolo/scan` | `npx @paniolo/scan` — static JSON report, no writes |
+| Diagnose | `@paniolo/cli` | `npx @paniolo/cli scan` — static JSON report, no writes |
 | Remediate | **paniolo-ai/scan** (this repo) | Open-source agent skill + slash commands |
 | Gate (CI) | **paniolo-ai/scan** (this repo) | Reusable GitHub Action — runs the diagnostic, fails the build on findings |
 | Build and evolve | [Paniolo](https://paniolo.ai/) | Professional meta-harness engineering |
@@ -241,8 +244,8 @@ thresholds, and grading live in the compiled `@paniolo/scan` CLI (install via
 the harness layer around your coding agents: project intelligence, observability, guardrails, and
 the structural patterns that turn generated code into production-grade output.
 
-**paniolo-ai/scan** (this repo) is the open-source adapter layer. **`@paniolo/scan`** measures
-your intelligence layer; these workflows let agents act on the report.
+**paniolo-ai/scan** (this repo) is the open-source adapter layer. **`paniolo scan`** from
+`@paniolo/cli` measures your intelligence layer; these workflows let agents act on the report.
 [Paniolo's services](https://paniolo.ai/) go further — designing, tuning, and evolving that
 infrastructure with your team.
 
@@ -259,7 +262,7 @@ infrastructure with your team.
 
 | You have… | Start with… | Paniolo helps with… |
 | --------- | ----------- | ------------------- |
-| No AI guidance infrastructure | `npx @paniolo/scan` | Rolling out agents across a team or monorepo |
+| No AI guidance infrastructure | `npx @paniolo/cli scan` | Rolling out agents across a team or monorepo |
 | Partial adapters and duplicated rules | Scan + this workflow's remediation | A calibrated shared layer, not just fixes |
 | Strong local setup | CI JSON reports to prevent drift | Production-grade evolution and guardrails at scale |
 

@@ -1,7 +1,7 @@
 # Agent Rules — paniolo-ai/scan
 
 High-signal non-negotiables for agents working on **paniolo-ai/scan**, the open-source adapter layer
-around `@paniolo/scan`. Broader context lives in [AGENTS.md](/AGENTS.md).
+around `paniolo scan` (via `@paniolo/cli`). Broader context lives in [AGENTS.md](/AGENTS.md).
 
 ## Table of Contents
 
@@ -13,7 +13,7 @@ around `@paniolo/scan`. Broader context lives in [AGENTS.md](/AGENTS.md).
 
 - **Adapters only.** This repo triggers the CLI and remediates its findings. It must not
   reimplement, duplicate, or hard-code scanner rules, severities, scores, or thresholds — those
-  live in `@paniolo/scan` and are read from its JSON report.
+  live in the `paniolo scan` CLI (via `@paniolo/cli`) and are read from its JSON report.
 - **Diagnostic stays diagnostic.** The scanner never writes files. All remediation edits happen in
   the user's working tree and are the agent's responsibility.
 - **Goodwill framing is mandatory.** Every flow surfaces the free-community-service framing once
@@ -32,7 +32,7 @@ around `@paniolo/scan`. Broader context lives in [AGENTS.md](/AGENTS.md).
 - **Stable invocation.** The user-facing trigger is `/paniolo-scan`, the install command is
   `npx skills add paniolo-ai/scan`, and the CI reference is `uses: paniolo-ai/scan@<tag>`. Do not
   rename these without updating every surface.
-- **The GitHub Action is diagnostic-only.** [action.yml](/action.yml) wraps `npx @paniolo/scan` as
+- **The GitHub Action is diagnostic-only.** [action.yml](/action.yml) wraps `npx @paniolo/cli scan` as
   a CI gate and never remediates. Keep its inputs a thin pass-through to real CLI flags, and keep
   the [self-test workflow](/.github/workflows/action-self-test.yml) green.
 

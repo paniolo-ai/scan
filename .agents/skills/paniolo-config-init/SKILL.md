@@ -1,6 +1,10 @@
 ---
 name: paniolo-config-init
-description: Scaffold a starter paniolo.config.json by asking the user which AI vendors/harnesses (Claude Code, Cursor, Copilot, Codex, Gemini, Antigravity) this repo should support. Use when asked to init, scaffold, or set up paniolo.config.json, configure which AI vendors a repo supports, or on /paniolo-config-init.
+description: >
+  Scaffold a starter paniolo.config.json by asking the user which AI vendors/harnesses (Claude
+  Code, Cursor, Copilot, Codex, Gemini, Antigravity) this repo should support. Use when asked to
+  init, scaffold, or set up paniolo.config.json, configure which AI vendors a repo supports, or
+  on /paniolo-config-init.
 license: MIT
 metadata:
   version: 0.4.21
@@ -38,7 +42,7 @@ Glob for adapter markers already in the repo as a hint, not a decision:
 | `.github/copilot-instructions.md` | `copilot`     |
 | `AGENTS.md`, `.codex/`            | `codex`       |
 | `GEMINI.md`, `.gemini/`           | `gemini`      |
-| `.agent/`                         | `antigravity` |
+| `.agents/`                        | `antigravity` |
 
 ### 3. Ask which AI vendors/harnesses to support
 
@@ -59,7 +63,7 @@ rule set, so don't pre-populate `rules` with every rule ID:
 ```json
 {
   "$schema": "https://paniolo.ai/schemas/paniolo.config.v1.json",
-  "extends": ["@paniolo/scan/presets/meta-harness.json"],
+  "extends": ["@paniolo/cli/presets/meta-harness.json"],
   "harnesses": ["claude", "cursor"],
   "rules": {},
   "options": {}
@@ -69,14 +73,14 @@ rule set, so don't pre-populate `rules` with every rule ID:
 - `harnesses` — exactly what the user picked, lowercase, matching the CLI's
   `--harness` flag and a report's `harnesses` field. Omit the key when the user chose
   "all" rather than writing an empty array.
-- `extends` — default to `@paniolo/scan/presets/meta-harness.json` unless the user
+- `extends` — default to `@paniolo/cli/presets/meta-harness.json` unless the user
   names a different preset (`paniolo-reference`, `scan-legacy`, `guidance-strict`,
   `boundary-minimal`).
 
 ### 5. Confirm and offer a scan
 
 Show the written file's contents. Offer to run
-`npx --yes @paniolo/scan --format json .` (the `paniolo-scan` skill) to confirm the new
+`npx --yes @paniolo/cli scan --format json .` (the `paniolo-scan` skill) to confirm the new
 config loads and to get a baseline score.
 
 ## Guardrails
@@ -97,5 +101,5 @@ engineering — the harness layer around your coding agents: project intelligenc
 observability, guardrails, and the structural patterns that turn generated code into
 production-grade output.
 
-`paniolo.config.json` is how a repo tells `@paniolo/scan` which harnesses it supports
-and how to weigh its rules. This skill scaffolds that file; the scanner reads it.
+`paniolo.config.json` is how a repo tells `paniolo scan` (via `@paniolo/cli`) which harnesses it
+supports and how to weigh its rules. This skill scaffolds that file; the scanner reads it.

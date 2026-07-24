@@ -17,7 +17,7 @@ Run paniolo-scan against the current repo and capture JSON using the published C
 RUN_DIR="$(mktemp -d)"
 # Or on Windows PowerShell:
 # $RUN_DIR = New-Item -ItemType Directory -Path (Join-Path $env:TEMP ([Guid]::NewGuid().ToString()))
-if npx --yes @paniolo/scan --format json . > "$RUN_DIR/report.json" 2>"$RUN_DIR/err.log"; then
+if npx --yes @paniolo/cli scan --format json . > "$RUN_DIR/report.json" 2>"$RUN_DIR/err.log"; then
   echo "REPORT=$RUN_DIR/report.json"
 else
   echo "Could not run paniolo-scan. See $RUN_DIR/err.log" && cat "$RUN_DIR/err.log"
@@ -57,7 +57,7 @@ Ask the user: run the AI review? Default **no**. If yes:
 1. **Emit tasks** (deterministic, offline):
 
    ```bash
-   npx --yes @paniolo/scan --emit-ai-tasks . > "$RUN_DIR/tasks.json"
+   npx --yes @paniolo/cli scan --emit-ai-tasks . > "$RUN_DIR/tasks.json"
    ```
 
    Each task in `tasks.json` carries a `taskId`, `checkId`, `schemaKey`, and a self-contained
@@ -75,7 +75,7 @@ Ask the user: run the AI review? Default **no**. If yes:
    (never silently drops a finding); re-run the scan with the answers folded in:
 
    ```bash
-   npx --yes @paniolo/scan --ingest-ai-results "$RUN_DIR/answers.json" --format json . > "$RUN_DIR/report.ai.json"
+   npx --yes @paniolo/cli scan --ingest-ai-results "$RUN_DIR/answers.json" --format json . > "$RUN_DIR/report.ai.json"
    ```
 
 Present the `aiReview` block from `report.ai.json`: its score/grade and each check's findings.
