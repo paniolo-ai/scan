@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Logs
+*.log
+.eslintcache
+
+# Secrets / env — never commit credentials
+.env
+.env.*
+!.env.example
+
+# Local caches / qmd machine prefs
+.cache/
+.qmd-local.json
+# Auto-written by the qmd UserPromptSubmit hook with per-prompt retrieval hits;
+# ephemeral, machine-local, and changes every prompt.
+.cursor/rules/qmd-retrieval.mdc
+
+# Per-user agent preferences and local overrides. Covers every AI vendor by shape
+# rather than by name — .claude/settings.local.json, .codex/config.local.toml,
+# .cursor/mcp.local.json, CLAUDE.local.md, GEMINI.local.md, and the same suffix
+# under any vendor directory added later.
+*.local.md
+*.local.json
+*.local.toml
+
+# `paniolo` local state: evolve journals and experience digests, run/harness locks,
+# the license key, and a machine-local CLI binary. Holds absolute paths and
+# credentials — never source.
+.paniolo/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
