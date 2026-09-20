@@ -4,13 +4,9 @@ Repo-wide instructions for AI coding agents working in **paniolo-ai/scan** — t
 open-source adapter layer that lets a coding agent run the deterministic `paniolo scan` CLI
 (via `@paniolo/cli`) and remediate its findings.
 
-## Read First
-
-1. [[sharp-shooter-wiki:rules]] — canonical project rules (this file defers to it).
-2. [[paniolo-wiki:available-skills]] — skill slug index.
-3. [README.md](/README.md) — user-facing install and harness setup.
-
-Thin adapters such as `CLAUDE.md` and `.agents/README.md` should stay short and point back here.
+Everything in this file is self-contained: it assumes a fresh clone of this repository and
+nothing else. Thin adapters such as `CLAUDE.md` and `.agents/README.md` stay short and point
+back here.
 
 ## What this repo is
 
@@ -39,8 +35,7 @@ remediation) as a CI gate that fails the build on findings at or above a thresho
 
 ## Core Rules
 
-Treat [[sharp-shooter-wiki:rules]] as canonical. If this file and the rules doc disagree,
-the rules doc wins.
+The rules below are canonical for this repo.
 
 - **Never reimplement scanner logic here.** Read rules, scores, and thresholds from the CLI's JSON
   report; do not hard-code or duplicate them in an adapter.
@@ -65,7 +60,7 @@ this repo:
 npx @paniolo/cli scan --format json .
 ```
 
-The repo should keep a clean meta-harness profile — it is the public face of a product that
+The repo should keep a clean harness profile — it is the public face of a product that
 measures harness quality.
 
 ## Safety

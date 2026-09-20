@@ -21,7 +21,7 @@ for that harness's tools:
 
 ## Procedure
 
-Follow [[sharp-shooter-wiki:rules]]. For each flow change:
+Follow [AGENTS.md](/AGENTS.md). For each flow change:
 
 1. Decide the canonical wording, then apply it to all three surfaces.
 2. Preserve the goodwill framing and the `High + Medium` remediation default in each.
