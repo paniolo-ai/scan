@@ -29,16 +29,13 @@ around `paniolo scan` (via `@paniolo/cli`). Broader context lives in [AGENTS.md]
   be self-contained, with no links to paths that exist only here.
 - **Keep adapters thin.** Shared guidance belongs in [AGENTS.md](/AGENTS.md) or `.agents/`, not
   duplicated across adapters.
-- **Stable invocation.** The user-facing trigger is `/paniolo-scan`, the install command is
-  `npx skills add paniolo-ai/scan`, and the CI reference is `uses: paniolo-ai/scan@<tag>`. Do not
-  rename these without updating every surface.
-- **The GitHub Action is diagnostic-only.** [action.yml](/action.yml) wraps `npx @paniolo/cli scan` as
-  a CI gate and never remediates. Keep its inputs a thin pass-through to real CLI flags, and keep
-  the [self-test workflow](/.github/workflows/action-self-test.yml) green.
+- **Stable invocation.** The user-facing trigger is `/paniolo-scan`, and the install command is
+  `npx skills add paniolo-ai/scan`. Do not rename these without updating every surface.
+- **No CI wrapper.** There is no composite action — CI users run `npx @paniolo/cli scan` directly
+  with `--fail-on`. Keep the README's CI section in sync with the real CLI flags.
 
 ## Markdown and Docs Rules
 
 - Use ATX headings, fenced code blocks with a language, and blank lines around lists and fences.
 - When a flow or trigger changes, update the README, the three flow surfaces, and these rules
-  together so nothing drifts. When the Action's inputs or the CLI contract changes, update
-  `action.yml`, the README Action section, and the self-test workflow together.
+  together so nothing drifts.

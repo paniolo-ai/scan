@@ -17,6 +17,6 @@ The same flows are also available as native triggers on harnesses that support i
   slash commands.
 - **Antigravity / Gemini** — `/paniolo-scan` workflow ([.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md)).
 
-For CI rather than an interactive agent, the repo also ships a **GitHub Action**
-([action.yml](/action.yml)) that runs the diagnostic only and fails the build on findings at or
-above a severity threshold. See the README's GitHub Action section for inputs and usage.
+For CI rather than an interactive agent, run the CLI directly —
+`npx @paniolo/cli scan . --fail-on error` exits non-zero when findings meet the threshold. See
+the README's CI section for a workflow example.

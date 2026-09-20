@@ -173,10 +173,9 @@ Useful when checking `.cursor/rules/`, skill wiring, and VS Code hook settings.
 
 ---
 
-## GitHub Action
+## Run it in CI
 
-Run `paniolo scan` as a CI gate with the reusable composite action in this repo. It wraps
-`npx @paniolo/cli scan` and fails the build when findings meet the `fail-on` threshold.
+The scanner needs no wrapper — run the CLI as a gate directly:
 
 ```yaml
 name: paniolo-scan
@@ -194,31 +193,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - uses: paniolo-ai/scan@v0.1.0
-        with:
-          fail-on: error
+      - run: npx --yes @paniolo/cli scan .
 ```
 
-The action is pre-1.0, so pin an exact tag like `paniolo-ai/scan@v0.1.0`. Inputs may
-change before a stable `v1` is published; `@main` tracks the latest unreleased changes.
-
-### Inputs
-
-| Input     | Description                                                                                  | Default |
-| --------- | -------------------------------------------------------------------------------------------- | ------- |
-| `fail-on` | Severity threshold that fails the build: `error`, `warn`, or `info`.                         | `error` |
-| `harness` | Comma-separated harness filter (`copilot,cursor,codex,antigravity,claude,gemini`). Empty scans all. | `""`    |
-| `path`    | Path within the repository to scan. Passed as the trailing positional argument.              | `.`     |
-| `args`    | Additional raw CLI flags. Must be valid `paniolo scan` flags — unknown flags fail the run.  | `""`    |
+The scan exits non-zero when findings meet the `--fail-on` threshold (`error` by default;
+`warn` or `info` for stricter gates). Add `--format json` for machine-readable output, or
+`--harness cursor,copilot` to scope the scan to specific harnesses:
 
 ```yaml
-# Stricter gate, JSON output, scan a subdirectory
-- uses: paniolo-ai/scan@v0.1.0
-  with:
-    fail-on: warn
-    harness: cursor,copilot
-    args: "--format json"
-    path: packages/app
+- run: npx --yes @paniolo/cli scan . --fail-on warn --format json
 ```
 
 ---
@@ -233,7 +216,7 @@ thresholds, and grading live in the compiled `paniolo scan` CLI from `@paniolo/c
 | ----- | ------- | ---- |
 | Diagnose | `@paniolo/cli` | `npx @paniolo/cli scan` — static JSON report, no writes |
 | Remediate | **paniolo-ai/scan** (this repo) | Open-source agent skill + slash commands |
-| Gate (CI) | **paniolo-ai/scan** (this repo) | Reusable GitHub Action — runs the diagnostic, fails the build on findings |
+| Gate (CI) | `npx @paniolo/cli scan` | Run the diagnostic in CI; a nonzero exit fails the build on findings |
 | Build and evolve | [Paniolo](https://paniolo.ai/) | Professional meta-harness engineering |
 
 ---

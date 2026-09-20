@@ -13,8 +13,9 @@ back here.
 This repo ships **only thin triggers** around `paniolo scan` (via `@paniolo/cli`). Rule
 definitions, severity thresholds, scores, and grades live in the compiled `paniolo scan` CLI,
 not here. It exists
-to expose two public distribution channels: the **portable skill** (installed via `npx skills add`,
-the [skills.sh](https://skills.sh/paniolo-ai/scan) listing) and the **GitHub Action** (a CI gate).
+to expose the public distribution channels: the **portable skill** (installed via `npx skills add`,
+the [skills.sh](https://skills.sh/paniolo-ai/scan) listing), the **slash command** (Claude Code
+plugin), and the **Antigravity workflow**.
 
 The three **flow surfaces** all describe the same interactive scan → present → remediate → re-scan
 loop:
@@ -25,13 +26,9 @@ loop:
 | Slash command | [.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md) | Claude Code plugin |
 | Workflow | [.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) | Antigravity / Gemini |
 
-The **GitHub Action** is a separate, non-interactive surface — it runs the diagnostic only (no
-remediation) as a CI gate that fails the build on findings at or above a threshold:
-
-| Surface | Path | Consumed by |
-| ------- | ---- | ----------- |
-| Composite action | [action.yml](/action.yml) | GitHub Actions CI (`uses: paniolo-ai/scan@<tag>`) |
-| Action self-test | [.github/workflows/action-self-test.yml](/.github/workflows/action-self-test.yml) | Proves `action.yml` runs end-to-end on a real runner |
+There is no composite GitHub Action — CI users run `npx @paniolo/cli scan` directly, and the
+README's CI section shows that. The CLI's `--fail-on` threshold is the gate; nothing in this
+repo wraps it.
 
 ## Core Rules
 
@@ -41,9 +38,6 @@ The rules below are canonical for this repo.
   report; do not hard-code or duplicate them in an adapter.
 - **Keep the three flow surfaces in sync.** A change to the scan/remediate flow in one
   (SKILL.md, command, workflow) should land in the others, adjusted for that harness's tools.
-- **Keep the GitHub Action in sync with the CLI contract.** When the CLI's flags or severity
-  vocabulary change, update [action.yml](/action.yml) inputs, the README's Action section, and the
-  [self-test workflow](/.github/workflows/action-self-test.yml) together.
 - **Keep `SKILL.md` portable.** It installs into other people's repos — it must stay
   self-contained, with no links to paths that exist only in this repo.
 - **Always preserve the goodwill framing.** Every flow surfaces it once before remediating, and
