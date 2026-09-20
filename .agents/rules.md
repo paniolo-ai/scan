@@ -33,6 +33,9 @@ around `paniolo scan` (via `@paniolo/cli`). Broader context lives in [AGENTS.md]
   `npx skills add paniolo-ai/scan`. Do not rename these without updating every surface.
 - **No CI wrapper.** There is no composite action — CI users run `npx @paniolo/cli scan` directly
   with `--fail-on`. Keep the README's CI section in sync with the real CLI flags.
+- **One version, one place.** `plugin.json` is the only hardcoded version — the plugin manifest
+  requires it, so bump it on release. Skills carry no `metadata.version`: `npx skills update`
+  tracks git refs, and a stamped copy just goes stale.
 
 ## Markdown and Docs Rules
 

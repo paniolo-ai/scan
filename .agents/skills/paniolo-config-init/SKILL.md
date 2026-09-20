@@ -7,7 +7,6 @@ description: >
   on /paniolo-config-init.
 license: MIT
 metadata:
-  version: 0.4.21
   homepage: https://github.com/paniolo-ai/scan
 ---
 
