@@ -2,7 +2,8 @@
 name: paniolo-config-init
 description: >
   Scaffold a starter paniolo.config.json by asking the user which AI vendors/harnesses (Claude
-  Code, Cursor, Copilot, Codex, Gemini, Antigravity) this repo should support. Use when asked to
+  Code, Cursor, Copilot, Codex, Gemini, Antigravity, Devin) this repo should support. Use when
+  asked to
   init, scaffold, or set up paniolo.config.json, configure which AI vendors a repo supports, or
   on /paniolo-config-init.
 license: MIT
@@ -42,11 +43,12 @@ Glob for adapter markers already in the repo as a hint, not a decision:
 | `AGENTS.md`, `.codex/`            | `codex`       |
 | `GEMINI.md`, `.gemini/`           | `gemini`      |
 | `.agents/`                        | `antigravity` |
+| `.devin/`                         | `devin`       |
 
 ### 3. Ask which AI vendors/harnesses to support
 
-Ask the user to pick from the six harnesses the scanner understands — `claude`,
-`cursor`, `copilot`, `codex`, `gemini`, `antigravity` — noting which ones Step 2
+Ask the user to pick from the seven harnesses the scanner understands — `claude`,
+`cursor`, `copilot`, `codex`, `gemini`, `antigravity`, `devin` — noting which ones Step 2
 detected as likely defaults. If the agent supports a multi-select prompt, use it;
 otherwise ask in plain text and accept a comma-separated list.
 
