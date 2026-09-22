@@ -14,7 +14,8 @@ metadata:
 
 Act on a `paniolo scan` report: fix the findings in the working tree, then re-scan to prove the
 delta. The scanner itself is **read-only** — it never writes files; you (the agent) apply every
-change.
+change. Platform binaries ship with a `SHA256SUMS.txt` manifest inside the package;
+`paniolo bootstrap` verifies the binary it links against it and refuses on a mismatch.
 
 ## When to use
 
