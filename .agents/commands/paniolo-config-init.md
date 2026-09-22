@@ -14,7 +14,9 @@ file — it never writes it — so the file the user ends up with is whatever yo
 
 Look for `paniolo.config.json` at the repo root. If it already exists, read it and show
 the current `harnesses` value (if any) before continuing — don't silently overwrite a
-file the user or a teammate already tuned.
+file the user or a teammate already tuned. If the user actually wants to migrate or
+deduplicate that existing config (legacy shape, repeated `repos` blocks, registering a
+repo or wiki), that's `/paniolo-config-upgrade`'s job — switch to it instead.
 
 ### Step 2: Run deterministic discovery
 

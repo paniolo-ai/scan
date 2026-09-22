@@ -23,6 +23,10 @@ which AI vendors/harnesses a repo should support — for example: "init paniolo 
 "set up paniolo.config.json", "which AI vendors should this repo support", or the
 `/paniolo-config-init` trigger.
 
+For an **existing** config — migrating the legacy shape, deduplicating repeated
+`repos` blocks into `repoDefaults`/`repoTypes`, or registering repos and wikis —
+use `paniolo-config-upgrade` instead.
+
 ## Flow
 
 ### 1. Check for an existing config
