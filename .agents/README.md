@@ -13,7 +13,8 @@ workflows.
   skill component, repointed here via [`plugin.json`](/.claude-plugin/plugin.json)'s `skills`
   field.
 - [`commands/`](commands/) — Claude Code plugin slash commands (`/paniolo-scan`,
-  `/paniolo-config-init`), repointed here via `plugin.json`'s `commands` field.
+  `/paniolo-scan-remediate`, `/paniolo-config-init`), repointed here via `plugin.json`'s
+  `commands` field.
 - [`agents/`](agents/) — Claude Code plugin subagent modes (e.g.
   [`adapter-sync.agent.md`](agents/adapter-sync.agent.md)), repointed here via `plugin.json`'s
   `agents` field.
@@ -27,5 +28,7 @@ Antigravity does **not** support native automated hooks (unlike Claude Code, Cop
 Cursor). It uses manual slash-command workflows instead.
 
 - [`workflows/paniolo-scan.md`](workflows/paniolo-scan.md) — the `/paniolo-scan` slash command.
-  Scan this repo's AI-agent harness with the deterministic paniolo-scan tool, then remediate
-  findings.
+  Audit this repo's AI-agent harness with the deterministic paniolo-scan tool (read-only).
+- [`workflows/paniolo-scan-remediate.md`](workflows/paniolo-scan-remediate.md) — the
+  `/paniolo-scan-remediate` slash command. Fix the audit's findings in the working tree, then
+  re-scan for the delta.

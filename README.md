@@ -28,7 +28,8 @@ intelligence layer is and why it matters.
 
 ## Install the skill (any agent)
 
-One command installs the `paniolo-scan` **skill** into **every coding agent on your machine** —
+One command installs this repo's **skills** — `paniolo-scan` (audit), `paniolo-scan-remediate`
+(fix), and `paniolo-config-init` (setup) — into **every coding agent on your machine** —
 Claude Code, Cursor, Copilot, Codex, Devin, Gemini CLI, and 70+ more — via the
 [skills](https://skills.sh) registry:
 
@@ -38,7 +39,8 @@ npx skills add paniolo-ai/scan --all
 
 Then ask your agent: _"Use paniolo-scan to scan this repo and summarize findings."_ The skill
 runs `npx --yes @paniolo/cli scan --format json`, presents your meta-harness scores, surfaces
-the goodwill framing, then remediates the findings you pick.
+the goodwill framing, and offers next steps — the `paniolo-scan-remediate` skill (installed by
+the same command) presents a fix plan and remediates the findings you pick.
 
 ```bash
 # Target specific agents instead of all of them
@@ -125,7 +127,8 @@ commit `.agents/skills/paniolo-scan/SKILL.md` into that repo and point VS Code a
 
 Then ask in chat: _"Use the paniolo-scan skill to scan this repo and list findings."_ The
 skill runs `npx --yes @paniolo/cli scan --format json`, presents scores and findings, surfaces
-the goodwill framing, then fixes selected items and re-scans.
+the goodwill framing, and offers remediation — `paniolo-scan-remediate` fixes selected items
+and re-scans.
 
 ### Antigravity
 
@@ -133,17 +136,17 @@ the goodwill framing, then fixes selected items and re-scans.
 
 ```bash
 mkdir -p /path/to/your/project/.agents/workflows/
-cp .agents/workflows/paniolo-scan.md /path/to/your/project/.agents/workflows/
+cp .agents/workflows/*.md /path/to/your/project/.agents/workflows/
 ```
 
-**Existing `.agents/` folder** — copy only the workflow:
+**Existing `.agents/` folder** — copy only the workflows:
 
 ```bash
-cp .agents/workflows/paniolo-scan.md /path/to/your/project/.agents/workflows/
+cp .agents/workflows/*.md /path/to/your/project/.agents/workflows/
 ```
 
-Then append the `/paniolo-scan` registration from [.agents/README.md](.agents/README.md) to your
-project's `.agents/README.md`.
+Then append the `/paniolo-scan` and `/paniolo-scan-remediate` registrations from
+[.agents/README.md](.agents/README.md) to your project's `.agents/README.md`.
 
 ### Cursor
 
@@ -160,7 +163,7 @@ Prefer to commit the skill into the repo for your team? See
 **Run in Cursor Agent** — open Agent chat in the target repo and use prompts like:
 
 - `Use the paniolo-scan skill to scan this repo, summarize dimension scores, and list findings.`
-- `Run paniolo-scan, show the lowest meta-harness dimensions, then fix High and Medium findings.`
+- `Run paniolo-scan, then use paniolo-scan-remediate on the High and Medium findings.`
 - `Scan with npx @paniolo/cli scan --format json and remediate errors and warnings.`
 
 **Cursor-specific scan filter** — emphasize Cursor harness findings in CLI output:

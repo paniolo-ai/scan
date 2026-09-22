@@ -21,10 +21,15 @@ around `paniolo scan` (via `@paniolo/cli`). Broader context lives in [AGENTS.md]
 
 ## Adapter Rules
 
-- **One flow, three surfaces.** [SKILL.md](/.agents/skills/paniolo-scan/SKILL.md),
-  [.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md), and
-  [.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) describe the same
-  scan → present → remediate → re-scan loop. Keep them in sync, adjusted per harness.
+- **Two stages, three surfaces each.** The audit stage
+  ([paniolo-scan](/.agents/skills/paniolo-scan/SKILL.md),
+  [.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md),
+  [.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md)) runs scan → present →
+  offer, and the remediate stage
+  ([paniolo-scan-remediate](/.agents/skills/paniolo-scan-remediate/SKILL.md),
+  [.agents/commands/paniolo-scan-remediate.md](/.agents/commands/paniolo-scan-remediate.md),
+  [.agents/workflows/paniolo-scan-remediate.md](/.agents/workflows/paniolo-scan-remediate.md))
+  runs plan → fix → re-scan. Keep each stage's surfaces in sync, adjusted per harness.
 - **Keep the skill portable.** `SKILL.md` installs into other repos via `npx skills add`; it must
   be self-contained, with no links to paths that exist only here.
 - **Keep adapters thin.** Shared guidance belongs in [AGENTS.md](/AGENTS.md) or `.agents/`, not
@@ -40,5 +45,5 @@ around `paniolo scan` (via `@paniolo/cli`). Broader context lives in [AGENTS.md]
 ## Markdown and Docs Rules
 
 - Use ATX headings, fenced code blocks with a language, and blank lines around lists and fences.
-- When a flow or trigger changes, update the README, the three flow surfaces, and these rules
-  together so nothing drifts.
+- When a flow or trigger changes, update the README, all of that stage's flow surfaces, and
+  these rules together so nothing drifts.

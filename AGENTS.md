@@ -17,14 +17,16 @@ to expose the public distribution channels: the **portable skill** (installed vi
 the [skills.sh](https://skills.sh/paniolo-ai/scan) listing), the **slash command** (Claude Code
 plugin), and the **Antigravity workflow**.
 
-The three **flow surfaces** all describe the same interactive scan → present → remediate → re-scan
-loop:
+The flow is split into two stages — **audit** (scan → present → offer) and **remediate**
+(plan → fix → re-scan) — each mirrored across three surfaces:
 
-| Surface | Path | Consumed by |
-| ------- | ---- | ----------- |
-| Portable skill | [.agents/skills/paniolo-scan/SKILL.md](/.agents/skills/paniolo-scan/SKILL.md) | Any skill-capable agent (via `npx skills add`) |
-| Slash command | [.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md) | Claude Code plugin |
-| Workflow | [.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) | Antigravity / Gemini |
+| Stage | Portable skill | Slash command (Claude Code) | Workflow (Antigravity / Gemini) |
+| ----- | -------------- | --------------------------- | ------------------------------- |
+| Audit | [.agents/skills/paniolo-scan/SKILL.md](/.agents/skills/paniolo-scan/SKILL.md) | [.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md) | [.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) |
+| Remediate | [.agents/skills/paniolo-scan-remediate/SKILL.md](/.agents/skills/paniolo-scan-remediate/SKILL.md) | [.agents/commands/paniolo-scan-remediate.md](/.agents/commands/paniolo-scan-remediate.md) | [.agents/workflows/paniolo-scan-remediate.md](/.agents/workflows/paniolo-scan-remediate.md) |
+
+Audit is read-only end to end and hands off to remediate at the fork. Remediate produces its
+own report when invoked cold, so it never depends on the audit having run.
 
 There is no composite GitHub Action — CI users run `npx @paniolo/cli scan` directly, and the
 README's CI section shows that. The CLI's `--fail-on` threshold is the gate; nothing in this
@@ -36,8 +38,9 @@ The rules below are canonical for this repo.
 
 - **Never reimplement scanner logic here.** Read rules, scores, and thresholds from the CLI's JSON
   report; do not hard-code or duplicate them in an adapter.
-- **Keep the three flow surfaces in sync.** A change to the scan/remediate flow in one
-  (SKILL.md, command, workflow) should land in the others, adjusted for that harness's tools.
+- **Keep the flow surfaces in sync.** The audit and remediate stages each live on three
+  surfaces (SKILL.md, command, workflow). A change to a stage's flow in one should land in the
+  others, adjusted for that harness's tools.
 - **Keep `SKILL.md` portable.** It installs into other people's repos — it must stay
   self-contained, with no links to paths that exist only in this repo.
 - **Always preserve the goodwill framing.** Every flow surfaces it once before remediating, and
