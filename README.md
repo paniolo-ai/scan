@@ -1,6 +1,6 @@
 # paniolo-ai/scan
 
-[![Install with skills.sh](https://skills.sh/b/paniolo-ai/scan)](https://skills.sh/paniolo-ai/scan)
+[![Install with skills.sh](https://skills.sh/b/paniolo-ai/skills)](https://skills.sh/paniolo-ai/skills)
 [![npm @paniolo/cli](https://img.shields.io/npm/v/%40paniolo%2Fcli?label=%40paniolo%2Fcli)](https://www.npmjs.com/package/@paniolo/cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 
@@ -28,13 +28,13 @@ intelligence layer is and why it matters.
 
 ## Install the skill (any agent)
 
-One command installs this repo's **skills** — `paniolo-scan` (audit), `paniolo-scan-remediate`
-(fix), and `paniolo-config-init` (setup) — into **every coding agent on your machine** —
-Claude Code, Cursor, Copilot, Codex, Devin, Gemini CLI, and 70+ more — via the
-[skills](https://skills.sh) registry:
+One command installs the Paniolo **skills** — `paniolo-scan` (audit), `paniolo-scan-remediate`
+(fix), `paniolo-config-init` (setup), and `paniolo-config-upgrade` (migrate/dedupe) — into
+**every coding agent on your machine** — Claude Code, Cursor, Copilot, Codex, Devin, Gemini CLI,
+and 70+ more — via the [skills](https://skills.sh) registry:
 
 ```bash
-npx skills add paniolo-ai/scan --all
+npx skills add paniolo-ai/skills --skill paniolo-scan --skill paniolo-scan-remediate --skill paniolo-config-init --skill paniolo-config-upgrade
 ```
 
 Then ask your agent: _"Use paniolo-scan to scan this repo and summarize findings."_ The skill
@@ -44,22 +44,24 @@ the same command) presents a fix plan and remediates the findings you pick.
 
 ```bash
 # Target specific agents instead of all of them
-npx skills add paniolo-ai/scan -a claude-code -a cursor -a codex
+npx skills add paniolo-ai/skills -a claude-code -a cursor -a codex
 
-# See what this repo ships, or install one skill
-npx skills add paniolo-ai/scan --list
-npx skills add paniolo-ai/scan --skill paniolo-scan
+# See what the registry ships, or install one skill
+npx skills add paniolo-ai/skills --list
+npx skills add paniolo-ai/skills --skill paniolo-scan
 
 # Prefer independent copies over symlinks (Windows, Docker/CI, or committing into a repo)
-npx skills add paniolo-ai/scan --all --copy
+npx skills add paniolo-ai/skills --all --copy
 ```
 
 By default the installer **symlinks** the skill into each agent (one canonical copy, updated in
 place by `npx skills update`). Add `--copy` for independent copies when symlinks aren't a good fit.
-Either way, nothing symlinked is committed here — this repo ships the skill as a plain file.
+Either way, nothing symlinked is committed — the registry ships each skill as a plain file.
 
-This repo is a multi-skill umbrella: every skill under [`.agents/skills/`](.agents/skills/)
-installs through the same command, and `--all` keeps you current as more are added.
+The skills live in the [paniolo-ai/skills](https://github.com/paniolo-ai/skills) registry so one
+install covers the whole catalog; this repo keeps the Claude Code plugin, slash commands, and
+Antigravity workflows (and vendors the skills for the plugin). `--all` keeps you current as more
+skills are added.
 
 > **Skill vs. slash command — two separate installs.**
 > The command above installs the portable **skill**, which works in every agent (in Claude Code it
@@ -77,14 +79,14 @@ slash-command adapters where a harness supports them.
 
 | Harness | What it gets | How |
 | ------- | ------------ | --- |
-| Claude Code | Skill **and** `/paniolo-scan` slash command | `npx skills add paniolo-ai/scan` or [plugin](#claude-code) |
-| Cursor | Portable skill | `npx skills add paniolo-ai/scan -a cursor` |
-| Copilot (VS Code) | Portable skill | `npx skills add paniolo-ai/scan -a copilot` |
-| Codex | Portable skill (also reads `AGENTS.md`) | `npx skills add paniolo-ai/scan -a codex` |
-| Devin | Portable skill | `npx skills add paniolo-ai/scan -a devin` |
-| Gemini CLI | Portable skill | `npx skills add paniolo-ai/scan -a gemini-cli` |
+| Claude Code | Skill **and** `/paniolo-scan` slash command | `npx skills add paniolo-ai/skills` or [plugin](#claude-code) |
+| Cursor | Portable skill | `npx skills add paniolo-ai/skills -a cursor` |
+| Copilot (VS Code) | Portable skill | `npx skills add paniolo-ai/skills -a copilot` |
+| Codex | Portable skill (also reads `AGENTS.md`) | `npx skills add paniolo-ai/skills -a codex` |
+| Devin | Portable skill | `npx skills add paniolo-ai/skills -a devin` |
+| Gemini CLI | Portable skill | `npx skills add paniolo-ai/skills -a gemini-cli` |
 | Antigravity / Gemini | `/paniolo-scan` workflow | [Antigravity setup](#antigravity) |
-| Any other skill-capable agent | Portable skill | `npx skills add paniolo-ai/scan --all` |
+| Any other skill-capable agent | Portable skill | `npx skills add paniolo-ai/skills --all` |
 
 The `--all` install covers every skill-capable agent. If yours still isn't detected,
 [contact Paniolo](https://paniolo.ai/#contact) to request priority adapter support.
@@ -95,7 +97,7 @@ The `--all` install covers every skill-capable agent. If yours still isn't detec
 
 Claude Code can use paniolo-scan **two ways**:
 
-- **Skill** — `npx skills add paniolo-ai/scan -a claude-code` (the
+- **Skill** — `npx skills add paniolo-ai/skills -a claude-code` (the
   [universal install](#install-the-skill-any-agent)). Invoked by name; counts toward skills.sh.
 - **Slash command** — install the plugin below to add a native `/paniolo-scan` (the plugin bundles
   the skill too). This path does **not** count toward skills.sh.
@@ -110,11 +112,11 @@ Claude Code can use paniolo-scan **two ways**:
 Install the skill for GitHub Copilot Chat:
 
 ```bash
-npx skills add paniolo-ai/scan -a copilot
+npx skills add paniolo-ai/skills -a copilot
 ```
 
 To ship the skill **as part of a target repo** — so teammates get it without installing anything —
-commit `.agents/skills/paniolo-scan/SKILL.md` into that repo and point VS Code at it in
+commit `.agents/skills/external/paniolo-scan/SKILL.md` into that repo and point VS Code at it in
 `.vscode/settings.json`:
 
 ```json
@@ -153,7 +155,7 @@ Then append the `/paniolo-scan` and `/paniolo-scan-remediate` registrations from
 Install the skill for Cursor:
 
 ```bash
-npx skills add paniolo-ai/scan -a cursor
+npx skills add paniolo-ai/skills -a cursor
 ```
 
 Prefer to commit the skill into the repo for your team? See

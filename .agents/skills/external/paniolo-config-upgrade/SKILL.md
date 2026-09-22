@@ -1,17 +1,15 @@
 ---
 name: paniolo-config-upgrade
-description: >
-  Upgrade, migrate, or deduplicate an existing paniolo.config.json — convert the
-  legacy product-siloed shape (scan.targets, evolve.verification.targets,
-  wiki.wikis) to the repo-centric shape, factor repeated per-repo policy into
-  repoDefaults or named repoTypes layers, connect a sibling repo, or trace where
-  an effective setting came from. Writes config files after confirmation. Use
-  when asked to migrate, modernize, dedupe, or restructure an existing
-  paniolo.config.json, or on /paniolo-config-upgrade. Do not use to create a
-  config from scratch — that is paniolo-config-init.
+description: |
+  Upgrade, migrate, or deduplicate an existing paniolo.config.json — convert the legacy product-siloed shape (scan.targets, evolve.verification.targets, wiki.wikis) to the repo-centric shape, factor repeated per-repo policy into repoDefaults or named repoTypes layers, connect a sibling repo, or trace where an effective setting came from. Writes config files after confirmation. Use when asked to migrate, modernize, dedupe, or restructure an existing paniolo.config.json, or on /paniolo-config-upgrade. Do not use to create a config from scratch — that is paniolo-config-init.
 license: MIT
 metadata:
-  homepage: https://github.com/paniolo-ai/scan
+  version: 0.1.0
+tags:
+- harness
+- config
+user-invocable: true
+references: []
 ---
 
 # paniolo-config-upgrade — migrate and deduplicate paniolo.config.json

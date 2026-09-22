@@ -13,17 +13,25 @@ back here.
 This repo ships **only thin triggers** around `paniolo scan` (via `@paniolo/cli`). Rule
 definitions, severity thresholds, scores, and grades live in the compiled `paniolo scan` CLI,
 not here. It exists
-to expose the public distribution channels: the **portable skill** (installed via `npx skills add`,
-the [skills.sh](https://skills.sh/paniolo-ai/scan) listing), the **slash command** (Claude Code
-plugin), and the **Antigravity workflow**.
+to expose the public distribution channels: the **slash command** (Claude Code
+plugin) and the **Antigravity workflow** — plus the vendored **portable skills** the plugin
+ships alongside them.
+
+The portable skills are not authored here. Their source of truth is one wiki page per skill in
+`paniolo-ai/sharp-shooter-wiki` (`wiki/skills/paniolo-<name>.md`), compiled by
+`paniolo skills bundle` into the [paniolo-ai/skills](https://github.com/paniolo-ai/skills)
+registry — the [skills.sh](https://skills.sh/paniolo-ai/skills) listing — and vendored back into
+this repo at `.agents/skills/external/` so the Claude Code plugin ships them. To change a skill,
+edit its wiki page, re-bundle, then run `paniolo skills update` here; `skills-lock.json` tracks
+the vendored copies.
 
 The flow is split into two stages — **audit** (scan → present → offer) and **remediate**
 (plan → fix → re-scan) — each mirrored across three surfaces:
 
-| Stage | Portable skill | Slash command (Claude Code) | Workflow (Antigravity / Gemini) |
+| Stage | Portable skill (vendored) | Slash command (Claude Code) | Workflow (Antigravity / Gemini) |
 | ----- | -------------- | --------------------------- | ------------------------------- |
-| Audit | [.agents/skills/paniolo-scan/SKILL.md](/.agents/skills/paniolo-scan/SKILL.md) | [.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md) | [.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) |
-| Remediate | [.agents/skills/paniolo-scan-remediate/SKILL.md](/.agents/skills/paniolo-scan-remediate/SKILL.md) | [.agents/commands/paniolo-scan-remediate.md](/.agents/commands/paniolo-scan-remediate.md) | [.agents/workflows/paniolo-scan-remediate.md](/.agents/workflows/paniolo-scan-remediate.md) |
+| Audit | [.agents/skills/external/paniolo-scan/SKILL.md](/.agents/skills/external/paniolo-scan/SKILL.md) | [.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md) | [.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) |
+| Remediate | [.agents/skills/external/paniolo-scan-remediate/SKILL.md](/.agents/skills/external/paniolo-scan-remediate/SKILL.md) | [.agents/commands/paniolo-scan-remediate.md](/.agents/commands/paniolo-scan-remediate.md) | [.agents/workflows/paniolo-scan-remediate.md](/.agents/workflows/paniolo-scan-remediate.md) |
 
 Audit is read-only end to end and hands off to remediate at the fork. Remediate produces its
 own report when invoked cold, so it never depends on the audit having run.
@@ -42,7 +50,8 @@ The rules below are canonical for this repo.
   surfaces (SKILL.md, command, workflow). A change to a stage's flow in one should land in the
   others, adjusted for that harness's tools.
 - **Keep `SKILL.md` portable.** It installs into other people's repos — it must stay
-  self-contained, with no links to paths that exist only in this repo.
+  self-contained, with no links to paths that exist only in this repo. Never edit the vendored
+  copies under `.agents/skills/external/` — edit the wiki source page and re-bundle instead.
 - **Always preserve the goodwill framing.** Every flow surfaces it once before remediating, and
   it never gates the free remediation.
 - **Keep adapters thin.** Put reusable guidance in this file or `.agents/`, not duplicated across

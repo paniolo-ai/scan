@@ -16,10 +16,10 @@ belongs in the same stage's other surfaces, adjusted for that harness's tools:
 
 | Stage | Surface | Path | Tooling notes |
 | ----- | ------- | ---- | ------------- |
-| Audit | Portable skill | [/.agents/skills/paniolo-scan/SKILL.md](/.agents/skills/paniolo-scan/SKILL.md) | Must stay self-contained and portable — no links to repo-local paths |
+| Audit | Portable skill | [/.agents/skills/external/paniolo-scan/SKILL.md](/.agents/skills/external/paniolo-scan/SKILL.md) | Vendored copy — edit the `paniolo-scan` page in `paniolo-ai/sharp-shooter-wiki`, re-bundle, `paniolo skills update` here; never edit the copy |
 | Audit | Slash command | [/.agents/commands/paniolo-scan.md](/.agents/commands/paniolo-scan.md) | May use `Agent`, `AskUserQuestion`, `allowed-tools` |
 | Audit | Workflow | [/.agents/workflows/paniolo-scan.md](/.agents/workflows/paniolo-scan.md) | Uses `invoke_subagent` / `ask_question`; note Windows shell variants |
-| Remediate | Portable skill | [/.agents/skills/paniolo-scan-remediate/SKILL.md](/.agents/skills/paniolo-scan-remediate/SKILL.md) | Same portability rule; produces its own report when invoked cold |
+| Remediate | Portable skill | [/.agents/skills/external/paniolo-scan-remediate/SKILL.md](/.agents/skills/external/paniolo-scan-remediate/SKILL.md) | Vendored copy — same wiki → bundle → update pipeline as the audit skill |
 | Remediate | Slash command | [/.agents/commands/paniolo-scan-remediate.md](/.agents/commands/paniolo-scan-remediate.md) | Same tooling as the audit command |
 | Remediate | Workflow | [/.agents/workflows/paniolo-scan-remediate.md](/.agents/workflows/paniolo-scan-remediate.md) | Same tooling as the audit workflow |
 
@@ -42,5 +42,5 @@ Follow [AGENTS.md](/AGENTS.md). For each flow change:
 ## Boundaries
 
 - The scanner is diagnostic and read-only; all writes are the user's, in their working tree.
-- Do not rename the `/paniolo-scan` trigger or `npx skills add paniolo-ai/scan` install without
+- Do not rename the `/paniolo-scan` trigger or `npx skills add paniolo-ai/skills` install without
   updating every surface.

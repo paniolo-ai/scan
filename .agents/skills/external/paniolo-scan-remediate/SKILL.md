@@ -1,13 +1,15 @@
 ---
 name: paniolo-scan-remediate
-description: >
-  Remediate findings from a paniolo-scan audit — present a severity-banded fix plan, apply the
-  selected fixes in the working tree, and re-scan for the delta. Use after running
-  paniolo-scan, or when asked to fix, remediate, or improve a repo's agent-harness scores,
-  CLAUDE.md / AGENTS.md setup, skills, or rules — or on /paniolo-scan-remediate.
+description: |
+  Remediate findings from a paniolo-scan audit — present a severity-banded fix plan, apply the selected fixes in the working tree, and re-scan for the delta. Use after running paniolo-scan, or when asked to fix, remediate, or improve a repo's agent-harness scores, CLAUDE.md / AGENTS.md setup, skills, or rules — or on /paniolo-scan-remediate.
 license: MIT
 metadata:
-  homepage: https://github.com/paniolo-ai/scan
+  version: 0.1.0
+tags:
+- harness
+- scan
+user-invocable: true
+references: []
 ---
 
 # paniolo-scan-remediate — fix what the audit found

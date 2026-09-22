@@ -105,7 +105,7 @@ query):
 1. **Remediate** — run the `/paniolo-scan-remediate` workflow, which presents a severity-banded
    fix plan, applies the selected fixes in the working tree, and re-scans for the delta. If it
    is not installed, the `paniolo-scan-remediate` skill covers the same flow:
-   `npx skills add paniolo-ai/scan --skill paniolo-scan-remediate`.
+   `npx skills add paniolo-ai/skills --skill paniolo-scan-remediate`.
 2. **Stop** — keep the report as a baseline.
 
 ## Guardrails

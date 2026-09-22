@@ -6,15 +6,17 @@ workflows.
 ## Contents
 
 - [`rules.md`](rules.md) — agent rules for working in this repo.
-- [`available-skills.md`](available-skills.md) — skill slug index for this repo's portable
-  skills.
-- [`skills/`](skills/) — portable skills (`<slug>/SKILL.md`), installable into any
-  skill-capable agent via `npx skills add paniolo-ai/scan`. Also the Claude Code plugin's
+- [`available-skills.md`](available-skills.md) — skill slug index for the portable skills this
+  repo ships.
+- [`skills/external/`](skills/external/) — portable skills (`<slug>/SKILL.md`), vendored from
+  the [paniolo-ai/skills](https://github.com/paniolo-ai/skills) registry and tracked by
+  `skills-lock.json`; installable into any skill-capable agent via
+  `npx skills add paniolo-ai/skills`. Also the Claude Code plugin's
   skill component, repointed here via [`plugin.json`](/.claude-plugin/plugin.json)'s `skills`
   field.
 - [`commands/`](commands/) — Claude Code plugin slash commands (`/paniolo-scan`,
-  `/paniolo-scan-remediate`, `/paniolo-config-init`), repointed here via `plugin.json`'s
-  `commands` field.
+  `/paniolo-scan-remediate`, `/paniolo-config-init`, `/paniolo-config-upgrade`), repointed here
+  via `plugin.json`'s `commands` field.
 - [`agents/`](agents/) — Claude Code plugin subagent modes (e.g.
   [`adapter-sync.agent.md`](agents/adapter-sync.agent.md)), repointed here via `plugin.json`'s
   `agents` field.

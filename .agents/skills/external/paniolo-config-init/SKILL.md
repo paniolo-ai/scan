@@ -1,14 +1,15 @@
 ---
 name: paniolo-config-init
-description: >
-  Scaffold a starter paniolo.config.json by asking the user which AI vendors/harnesses (Claude
-  Code, Cursor, Copilot, Codex, Gemini, Antigravity, Devin) this repo should support. Use when
-  asked to
-  init, scaffold, or set up paniolo.config.json, configure which AI vendors a repo supports, or
-  on /paniolo-config-init.
+description: |
+  Scaffold a starter paniolo.config.json by asking the user which AI vendors/harnesses (Claude Code, Cursor, Copilot, Codex, Gemini, Antigravity, Devin) this repo should support. Use when asked to init, scaffold, or set up paniolo.config.json, configure which AI vendors a repo supports, or on /paniolo-config-init.
 license: MIT
 metadata:
-  homepage: https://github.com/paniolo-ai/scan
+  version: 0.1.0
+tags:
+- harness
+- config
+user-invocable: true
+references: []
 ---
 
 # paniolo-config-init — scaffold paniolo.config.json
@@ -39,7 +40,7 @@ already tuned.
 
 Glob for adapter markers already in the repo as a hint, not a decision:
 
-| Marker                           | Harness       |
+| Marker                            | Harness       |
 | --------------------------------- | ------------- |
 | `CLAUDE.md`, `.claude/`           | `claude`      |
 | `.cursor/`, `.cursorrules`        | `cursor`      |

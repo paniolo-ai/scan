@@ -1,0 +1,33 @@
+{
+	"version": 1,
+	"skills": {
+		"paniolo-config-init": {
+			"source": "paniolo-ai/skills",
+			"sourceType": "github",
+			"skillPath": "skills/paniolo-config-init/SKILL.md",
+			"computedHash": "14607f8fe5f863eb19ff605ff0235ae6b7ca8b10fb4728230ffc1cbb61433648",
+			"resolvedRef": "main"
+		},
+		"paniolo-config-upgrade": {
+			"source": "paniolo-ai/skills",
+			"sourceType": "github",
+			"skillPath": "skills/paniolo-config-upgrade/SKILL.md",
+			"computedHash": "e096193b1d91a789421ba6535fc7bafd66ef2c985670ac9db63fdf250fcfe020",
+			"resolvedRef": "main"
+		},
+		"paniolo-scan": {
+			"source": "paniolo-ai/skills",
+			"sourceType": "github",
+			"skillPath": "skills/paniolo-scan/SKILL.md",
+			"computedHash": "a0774c8a879d818cad709d081fca950110dac413e8053d9e4183b627748bd46a",
+			"resolvedRef": "main"
+		},
+		"paniolo-scan-remediate": {
+			"source": "paniolo-ai/skills",
+			"sourceType": "github",
+			"skillPath": "skills/paniolo-scan-remediate/SKILL.md",
+			"computedHash": "0b6fb80eaa183ca64c25f8fe60c2ec603551e79aea808127a281bd2c8c4c47fb",
+			"resolvedRef": "main"
+		}
+	}
+}

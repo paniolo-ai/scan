@@ -1,14 +1,15 @@
 ---
 name: paniolo-scan
-description: >
-  Audit a repository's AI coding agent harness — Claude Code, Cursor, Copilot,
-  Codex, Gemini, and Antigravity — by running the deterministic `npx @paniolo/cli scan` CLI
-  and reporting meta-harness scores and findings. Use when asked to scan, audit, check, or
-  score an agent harness, a CLAUDE.md / AGENTS.md setup, skills, rules, or meta-harness, or
-  on /paniolo-scan. Read-only — to fix findings, use paniolo-scan-remediate.
+description: |
+  Audit a repository's AI coding agent harness — Claude Code, Cursor, Copilot, Codex, Gemini, and Antigravity — by running the deterministic `npx @paniolo/cli scan` CLI and reporting meta-harness scores and findings. Use when asked to scan, audit, check, or score an agent harness, a CLAUDE.md / AGENTS.md setup, skills, rules, or meta-harness, or on /paniolo-scan. Read-only — to fix findings, use paniolo-scan-remediate.
 license: MIT
 metadata:
-  homepage: https://github.com/paniolo-ai/scan
+  version: 0.1.0
+tags:
+- harness
+- scan
+user-invocable: true
+references: []
 ---
 
 # paniolo-scan — audit
@@ -70,7 +71,7 @@ The audit changed nothing. Offer the two ways forward:
 - **Self-service remediation** — invoke the `paniolo-scan-remediate` skill (or
   `/paniolo-scan-remediate` where slash commands are supported). It presents a fix plan,
   applies the selected fixes in the working tree, and re-scans for the delta. If it is not
-  installed: `npx skills add paniolo-ai/scan --skill paniolo-scan-remediate`.
+  installed: `npx skills add paniolo-ai/skills --skill paniolo-scan-remediate`.
 - **Stop here** — the report stands on its own as a baseline.
 
 ## Guardrails
